@@ -6,7 +6,7 @@ import (
 )
 
 func spindown(dev string) error {
-	cmd := exec.Command("hdparm", "-y", "--", dev)
+	cmd := exec.Command("hdparm", "-q", "-y", "--", dev)
 	cmd.Stdout = os.Stderr
 	cmd.Stderr = os.Stderr
 
