@@ -14,7 +14,7 @@ import (
 
 var idle = flag.Duration("idle", time.Duration(10*time.Minute), "how long disk needs to be idle")
 
-var Usage = func() {
+func usage() {
 	fmt.Fprintf(os.Stderr, "Usage of %s:\n", os.Args[0])
 	fmt.Fprintf(os.Stderr, "  %s [OPTS] DISK [DISK..]\n", os.Args[0])
 	flag.PrintDefaults()
@@ -48,7 +48,7 @@ func main() {
 	log.SetFlags(0)
 	log.SetPrefix(prog + ": ")
 
-	flag.Usage = Usage
+	flag.Usage = usage
 	flag.Parse()
 	if flag.NArg() == 0 {
 		flag.Usage()
